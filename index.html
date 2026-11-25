@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ways of Linking Ideas — Interactive Practice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom subtle scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+            }
+            .shadow-sm, .shadow-md, .shadow-lg {
+                box-shadow: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+    <!-- Top Sticky Navigation & Progress Header -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-sm shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">Ways of Linking Ideas</h1>
+                    <p class="text-xs text-slate-500">A staged practice worksheet • Interactive Edition</p>
+                </div>
+            </div>
+
+            <!-- Live Progress & Quick Nav -->
+            <div class="flex items-center justify-between sm:justify-end gap-3 sm:gap-4">
+                <nav class="hidden md:flex items-center gap-1 text-xs font-medium bg-slate-100 p-1 rounded-xl">
+                    <a href="#section-a" class="px-2.5 py-1.5 rounded-lg hover:bg-white hover:text-indigo-600 transition">A: Controlled</a>
+                    <a href="#section-b" class="px-2.5 py-1.5 rounded-lg hover:bg-white hover:text-indigo-600 transition">B: Semi-Controlled</a>
+                    <a href="#section-c" class="px-2.5 py-1.5 rounded-lg hover:bg-white hover:text-indigo-600 transition">C: Freer</a>
+                </nav>
+
+                <div class="flex items-center gap-2.5 bg-indigo-50 border border-indigo-100 px-3 py-1.5 rounded-xl">
+                    <div class="text-right">
+                        <div class="text-[11px] uppercase tracking-wider font-semibold text-indigo-600">Progress</div>
+                        <div class="text-xs font-bold text-slate-800"><span id="total-score">0</span> / <span id="total-max">31</span> pts</div>
+                    </div>
+                    <div class="w-16 sm:w-20 h-2 bg-indigo-200 rounded-full overflow-hidden">
+                        <div id="progress-bar" class="h-full bg-indigo-600 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-8">
+
+        <!-- Intro & Quick Reference Card -->
+        <section class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="p-5 sm:p-6 bg-gradient-to-r from-indigo-600 to-violet-600 text-white">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <span class="inline-block px-2.5 py-0.5 rounded-full bg-white/20 text-xs font-semibold tracking-wide mb-2">Staged Practice</span>
+                        <h2 class="text-xl sm:text-2xl font-bold">Connecting Ideas Clearly</h2>
+                        <p class="text-indigo-100 text-sm mt-1 max-w-2xl">
+                            Practise connecting ideas clearly in sentences and short texts. Start with controlled choices, then complete guided tasks, and finish by expressing your own ideas.
+                        </p>
+                    </div>
+                    <button id="toggle-ref-btn" type="button" class="no-print self-start sm:self-center inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-indigo-700 font-semibold text-sm shadow-sm hover:bg-indigo-50 transition shrink-0">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        <span id="toggle-ref-text">Hide Quick Reference</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Collapsible Quick Reference Content -->
+            <div id="quick-ref-panel" class="p-5 sm:p-6 space-y-5 bg-white transition-all">
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                        Quick Reference Guide
+                    </h3>
+                    <!-- Category Filter Tabs -->
+                    <div class="flex flex-wrap gap-1.5" id="ref-tabs">
+                        <button type="button" data-cat="all" class="ref-tab active px-3 py-1 rounded-lg text-xs font-semibold bg-indigo-600 text-white transition">All Categories</button>
+                        <button type="button" data-cat="addition" class="ref-tab px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Addition</button>
+                        <button type="button" data-cat="sequence" class="ref-tab px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Sequence</button>
+                        <button type="button" data-cat="cause" class="ref-tab px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Cause & Result</button>
+                        <button type="button" data-cat="contrast" class="ref-tab px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Contrast</button>
+                        <button type="button" data-cat="example" class="ref-tab px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Examples & Reformulation</button>
+                    </div>
+                </div>
+
+                <!-- 5 Categories Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5" id="ref-cards-grid">
+                    <div data-category="addition" class="ref-card p-3.5 rounded-xl bg-blue-50/70 border border-blue-100">
+                        <div class="text-xs font-bold uppercase tracking-wider text-blue-700 mb-1.5">Addition</div>
+                        <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                            and, as well as, also, besides, furthermore, in addition, moreover, similarly
+                        </p>
+                    </div>
+                    <div data-category="sequence" class="ref-card p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-100">
+                        <div class="text-xs font-bold uppercase tracking-wider text-emerald-700 mb-1.5">Sequence</div>
+                        <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                            first, next, after that, then, firstly, secondly, finally
+                        </p>
+                    </div>
+                    <div data-category="cause" class="ref-card p-3.5 rounded-xl bg-amber-50/70 border border-amber-100">
+                        <div class="text-xs font-bold uppercase tracking-wider text-amber-700 mb-1.5">Cause and Result</div>
+                        <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                            because, so, therefore, consequently, as a result, because of, due to, owing to
+                        </p>
+                    </div>
+                    <div data-category="contrast" class="ref-card p-3.5 rounded-xl bg-rose-50/70 border border-rose-100">
+                        <div class="text-xs font-bold uppercase tracking-wider text-rose-700 mb-1.5">Contrast</div>
+                        <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                            but, although, though, however, in contrast, nevertheless, on the other hand, despite, in spite of
+                        </p>
+                    </div>
+                    <div data-category="example" class="ref-card p-3.5 rounded-xl bg-purple-50/70 border border-purple-100 md:col-span-2 lg:col-span-2">
+                        <div class="text-xs font-bold uppercase tracking-wider text-purple-700 mb-1.5">Examples and Reformulation</div>
+                        <p class="text-sm text-slate-700 leading-relaxed font-medium">
+                            for example, that is to say, in other words, that is (i.e.)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Grammar Reminder Box -->
+                <div class="p-4 rounded-xl bg-slate-900 text-slate-100 flex flex-col sm:flex-row gap-3.5 items-start">
+                    <div class="p-2 rounded-lg bg-amber-400/20 text-amber-300 shrink-0 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="space-y-1.5 text-xs sm:text-sm">
+                        <div class="font-bold text-amber-300 uppercase tracking-wider text-xs">Grammar & Punctuation Reminder</div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-slate-200">
+                            <div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
+                                <span class="text-amber-300 font-semibold">because</span> + clause (subject + verb)<br>
+                                <span class="text-amber-300 font-semibold">because of / due to / owing to</span> + noun or <em>-ing</em>
+                            </div>
+                            <div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
+                                <span class="text-emerald-300 font-semibold">Although</span> + clause (subject + verb)<br>
+                                <span class="text-emerald-300 font-semibold">despite / in spite of</span> + noun or <em>-ing</em>
+                            </div>
+                            <div class="bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
+                                Use a <span class="text-sky-300 font-semibold">comma (,)</span> after many sentence-opening linkers:<br>
+                                <em>However, … / As a result, …</em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- SECTION A: CONTROLLED PRACTICE -->
+        <!-- ========================================================= -->
+        <section id="section-a" class="space-y-6 scroll-mt-24">
+            <div class="flex items-center gap-3">
+                <span class="w-9 h-9 rounded-xl bg-indigo-600 text-white font-bold flex items-center justify-center shadow-sm">A</span>
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900">Controlled Practice</h2>
+                    <p class="text-xs sm:text-sm text-slate-500">Focus on accuracy, meaning, and grammatical structures.</p>
+                </div>
+            </div>
+
+            <!-- TASK 1: Choose the best linker -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6 space-y-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded-md bg-indigo-100 text-indigo-700 font-bold text-xs">Task 1</span>
+                            <h3 class="text-lg font-bold text-slate-900">Choose the best linker</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mt-1">Click the best option in brackets for each sentence. Instant feedback will explain the rule.</p>
+                    </div>
+                    <div class="flex items-center gap-2 self-start sm:self-center">
+                        <span id="task1-score-badge" class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold">0 / 12 Correct</span>
+                        <button type="button" onclick="resetTask1()" class="no-print px-3 py-1.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 text-xs font-semibold transition">Reset</button>
+                    </div>
+                </div>
+
+                <div id="task1-container" class="space-y-3">
+                    <!-- Rendered dynamically via JS -->
+                </div>
+            </div>
+
+            <!-- TASK 2: Join the ideas -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6 space-y-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded-md bg-indigo-100 text-indigo-700 font-bold text-xs">Task 2</span>
+                            <h3 class="text-lg font-bold text-slate-900">Join the ideas</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mt-1">Combine each pair into one sentence (or clearly linked sequence) using the linker in brackets. Pay attention to punctuation and structure.</p>
+                    </div>
+                    <div class="flex items-center gap-2 self-start sm:self-center">
+                        <span id="task2-score-badge" class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold">0 / 6 Checked</span>
+                        <button type="button" onclick="checkAllTask2()" class="no-print px-3.5 py-1.5 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 text-xs font-semibold transition shadow-sm">Check All</button>
+                    </div>
+                </div>
+
+                <div id="task2-container" class="space-y-4">
+                    <!-- Rendered dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- SECTION B: SEMI CONTROLLED PRACTICE -->
+        <!-- ========================================================= -->
+        <section id="section-b" class="space-y-6 scroll-mt-24">
+            <div class="flex items-center gap-3">
+                <span class="w-9 h-9 rounded-xl bg-violet-600 text-white font-bold flex items-center justify-center shadow-sm">B</span>
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900">Semi-Controlled Practice</h2>
+                    <p class="text-xs sm:text-sm text-slate-500">Apply linkers in connected discourse, sentence transformations, and guided completions.</p>
+                </div>
+            </div>
+
+            <!-- TASK 3: Complete the mini text -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6 space-y-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded-md bg-violet-100 text-violet-700 font-bold text-xs">Task 3</span>
+                            <h3 class="text-lg font-bold text-slate-900">Complete the mini text</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mt-1">Click a linking expression from the word bank, then click a numbered gap (or click a filled gap to clear it). Use each expression once.</p>
+                    </div>
+                    <div class="flex items-center gap-2 self-start sm:self-center">
+                        <span id="task3-score-badge" class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold">0 / 7 Correct</span>
+                        <button type="button" onclick="checkTask3()" class="no-print px-3.5 py-1.5 rounded-xl bg-violet-600 text-white hover:bg-violet-700 text-xs font-semibold transition shadow-sm">Check Text</button>
+                        <button type="button" onclick="resetTask3()" class="no-print px-3 py-1.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 text-xs font-semibold transition">Reset</button>
+                    </div>
+                </div>
+
+                <!-- Word Bank -->
+                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                    <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Word Bank (Click to select, then click a blank below)</div>
+                    <div id="word-bank" class="flex flex-wrap gap-2">
+                        <!-- Rendered dynamically -->
+                    </div>
+                </div>
+
+                <!-- Paragraph with interactive gaps -->
+                <div id="task3-paragraph" class="p-4 sm:p-6 rounded-xl bg-violet-50/40 border border-violet-100 text-slate-800 leading-loose text-base sm:text-[17px]">
+                    <!-- Rendered dynamically -->
+                </div>
+
+                <div id="task3-feedback" class="hidden space-y-2 pt-2"></div>
+            </div>
+
+            <!-- TASK 4: Rewrite with the linker given -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6 space-y-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded-md bg-violet-100 text-violet-700 font-bold text-xs">Task 4</span>
+                            <h3 class="text-lg font-bold text-slate-900">Rewrite with the linker given</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mt-1">Keep the original meaning. Rewrite each sentence using the expression in brackets.</p>
+                    </div>
+                    <div class="flex items-center gap-2 self-start sm:self-center">
+                        <span id="task4-score-badge" class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold">0 / 6 Checked</span>
+                        <button type="button" onclick="checkAllTask4()" class="no-print px-3.5 py-1.5 rounded-xl bg-violet-600 text-white hover:bg-violet-700 text-xs font-semibold transition shadow-sm">Check All</button>
+                    </div>
+                </div>
+
+                <div id="task4-container" class="space-y-4">
+                    <!-- Rendered dynamically -->
+                </div>
+            </div>
+
+            <!-- TASK 5: Finish the sentences -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6 space-y-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-0.5 rounded-md bg-violet-100 text-violet-700 font-bold text-xs">Task 5</span>
+                            <h3 class="text-lg font-bold text-slate-900">Finish the sentences</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 mt-1">Complete each sentence with your own idea. Make sure your continuation matches the grammar and meaning of the linker.</p>
+                    </div>
+                    <button type="button" onclick="toggleAllTask5Samples()" class="no-print self-start sm:self-center px-3 py-1.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold transition">
+                        Toggle Sample Ideas
+                    </button>
+                </div>
+
+                <div id="task5-container" class="space-y-4">
+                    <!-- Rendered dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- SECTION C: FREER PRACTICE -->
+        <!-- ========================================================= -->
+        <section id="section-c" class="space-y-6 scroll-mt-24">
+            <div class="flex items-center gap-3">
+                <span class="w-9 h-9 rounded-xl bg-emerald-600 text-white font-bold flex items-center justify-center shadow-sm">C</span>
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900">Freer Practice & Self Check</h2>
+                    <p class="text-xs sm:text-sm text-slate-500">Plan, write, discuss, and review your use of linking expressions.</p>
+                </div>
+            </div>
+
+            <!-- TASK 6: Choose a topic and plan -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6 space-y-5">
+                <div class="border-b border-slate-100 pb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-0.5 rounded-md bg-emerald-100 text-emerald-700 font-bold text-xs">Task 6</span>
+                        <h3 class="text-lg font-bold text-slate-900">Choose a topic and plan</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mt-1">Select a topic, jot down brief planning notes, and write a coherent paragraph of <strong>100–130 words</strong> using all five linker types.</p>
+                </div>
+
+                <!-- Step 1: Topic Selector -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">1. Select Your Topic</label>
+                    <div id="topic-selector" class="flex flex-wrap gap-2">
+                        <!-- Rendered dynamically -->
+                    </div>
+                </div>
+
+                <!-- Step 2: Brief Planning Notes -->
+                <div>
+                    <label for="planning-notes" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">2. Brief Notes (Both sides or steps in your topic)</label>
+                    <textarea id="planning-notes" rows="2" placeholder="e.g., Idea 1: Start with a short morning stretch -> Result: Better focus in class -> Contrast: Some prefer resting -> Example: walking or yoga..." class="w-full rounded-xl border border-slate-200 bg-slate-50/70 px-3.5 py-2.5 text-sm text-slate-800 focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition"></textarea>
+                </div>
+
+                <!-- Step 3: Paragraph Editor + Live Linker Detector -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <div class="lg:col-span-2 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <label for="paragraph-editor" class="text-xs font-bold uppercase tracking-wider text-slate-500">3. Write Your Paragraph (100–130 words)</label>
+                            <div id="word-count-badge" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 transition">
+                                0 / 100–130 words
+                            </div>
+                        </div>
+                        <textarea id="paragraph-editor" rows="8" placeholder="Start writing your paragraph here. The checklist on the right will automatically detect your linking expressions as you type..." class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm sm:text-base text-slate-800 leading-relaxed focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition"></textarea>
+
+                        <!-- Highlighted Preview of Detected Linkers -->
+                        <div id="detected-preview-box" class="hidden p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm leading-relaxed">
+                            <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Live Highlighted Linkers Preview</div>
+                            <div id="detected-preview-text" class="text-slate-700"></div>
+                        </div>
+                    </div>
+
+                    <!-- Live Linker Checklist Sidebar -->
+                    <div class="p-4 rounded-xl bg-emerald-50/60 border border-emerald-100 space-y-3 flex flex-col justify-between">
+                        <div class="space-y-2.5">
+                            <div class="text-xs font-bold uppercase tracking-wider text-emerald-800">Required Linkers Tracker</div>
+                            <p class="text-xs text-slate-600">Include at least one expression from each category:</p>
+                            <ul id="linker-requirements-list" class="space-y-2 text-xs">
+                                <!-- Rendered dynamically -->
+                            </ul>
+                        </div>
+                        <div class="pt-3 border-t border-emerald-200/60 text-[11px] text-slate-500">
+                            Tip: Check that the grammar after each linker is correct and use a comma after sentence-opening linkers.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 7: Pair discussion -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6 space-y-5">
+                <div class="border-b border-slate-100 pb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-0.5 rounded-md bg-emerald-100 text-emerald-700 font-bold text-xs">Task 7</span>
+                        <h3 class="text-lg font-bold text-slate-900">Pair discussion</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mt-1">Discuss your paragraph with a partner. Ask follow-up questions and add one new idea using an appropriate linker.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- 5 Discussion Questions -->
+                    <div class="space-y-2.5">
+                        <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Follow-up Discussion Questions</div>
+                        <ol class="space-y-2 text-sm text-slate-700">
+                            <li class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex gap-2.5">
+                                <span class="font-bold text-emerald-600">1.</span>
+                                <span>Which idea in your paragraph is the most important? Why?</span>
+                            </li>
+                            <li class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex gap-2.5">
+                                <span class="font-bold text-emerald-600">2.</span>
+                                <span>Can you give a specific example?</span>
+                            </li>
+                            <li class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex gap-2.5">
+                                <span class="font-bold text-emerald-600">3.</span>
+                                <span>Is there another point of view? How can you show contrast?</span>
+                            </li>
+                            <li class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex gap-2.5">
+                                <span class="font-bold text-emerald-600">4.</span>
+                                <span>What happens as a result of your suggestion?</span>
+                            </li>
+                            <li class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex gap-2.5">
+                                <span class="font-bold text-emerald-600">5.</span>
+                                <span>Can you explain one idea in other words?</span>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <!-- Interactive Partner Feedback Starters -->
+                    <div class="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200/80 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-600">Partner Feedback Notes</span>
+                                <button type="button" onclick="copyPartnerFeedback()" id="copy-feedback-btn" class="no-print inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                    </svg>
+                                    <span>Copy Feedback</span>
+                                </button>
+                            </div>
+
+                            <div class="space-y-2.5 text-xs sm:text-sm">
+                                <div>
+                                    <label class="block font-medium text-slate-700 mb-1">I understood your main idea because …</label>
+                                    <input type="text" id="fb-1" placeholder="complete the feedback..." class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-emerald-500 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block font-medium text-slate-700 mb-1">One linker you used effectively was …</label>
+                                    <input type="text" id="fb-2" placeholder="e.g., 'However' to show contrast..." class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-emerald-500 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block font-medium text-slate-700 mb-1">You could make the connection clearer by using …</label>
+                                    <input type="text" id="fb-3" placeholder="suggest a linker or transition..." class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-emerald-500 outline-none">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="copy-toast" class="hidden text-xs font-semibold text-emerald-700 bg-emerald-100 px-3 py-1.5 rounded-lg text-center">
+                            Copied partner feedback to clipboard!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SELF CHECK -->
+            <div class="bg-slate-900 text-white rounded-2xl shadow-md p-5 sm:p-6 space-y-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Self Check
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-400 mt-0.5">Review your work before finishing the worksheet.</p>
+                    </div>
+                    <button type="button" onclick="window.print()" class="no-print self-start sm:self-center inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs sm:text-sm transition shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                        </svg>
+                        Print / Export Summary
+                    </button>
+                </div>
+
+                <div id="self-check-list" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <!-- Rendered dynamically -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-5xl mx-auto px-4 sm:px-6 py-8 text-center text-xs text-slate-400">
+        Ways of Linking Ideas • Interactive Staged Practice Worksheet
+    </footer>
+
+    <script>
+        // =========================================================================
+        // DATA DEFINITIONS (EXACT WORKSHEET CONTENT)
+        // =========================================================================
+
+        const task1Data = [
+            {
+                id: 1,
+                before: "Our class planted trees in the school yard. ",
+                options: ["Furthermore", "Because of"],
+                after: ", we put up signs asking people to protect them.",
+                correct: "Furthermore",
+                explanation: "'Furthermore' adds a related action/idea and is followed by a comma. 'Because of' must be followed by a noun or -ing phrase, not a comma + full clause."
+            },
+            {
+                id: 2,
+                before: "Mia wanted to join the debate club, ",
+                options: ["but", "therefore"],
+                after: " she was nervous about speaking in public.",
+                correct: "but",
+                explanation: "'but' introduces a contrasting feeling (wanting to join vs. feeling nervous). 'Therefore' shows a logical result."
+            },
+            {
+                id: 3,
+                before: "The bus was delayed ",
+                options: ["because", "so"],
+                after: " there was heavy traffic.",
+                correct: "because",
+                explanation: "'because' introduces the reason/cause (heavy traffic) for the delay. 'So' would introduce the result."
+            },
+            {
+                id: 4,
+                before: "There was heavy traffic. ",
+                options: ["As a result", "Although"],
+                after: ", the bus arrived late.",
+                correct: "As a result",
+                explanation: "'As a result' introduces the consequence of the heavy traffic and takes a comma at the start of the sentence."
+            },
+            {
+                id: 5,
+                before: "",
+                options: ["First", "Finally"],
+                after: ", read the instructions carefully. Then, open the quiz.",
+                correct: "First",
+                explanation: "'First' marks the initial step in a sequence, matching 'Then' in the second sentence."
+            },
+            {
+                id: 6,
+                before: "The team practised every day. ",
+                options: ["However", "Consequently"],
+                after: ", they still lost the final.",
+                correct: "However",
+                explanation: "'However' shows an unexpected contrast between practising daily and still losing."
+            },
+            {
+                id: 7,
+                before: "",
+                options: ["Although", "Despite"],
+                after: " the weather was cold, the students continued the match.",
+                correct: "Although",
+                explanation: "'Although' is followed by a full clause ('the weather was cold' = subject + verb). 'Despite' requires a noun or -ing form."
+            },
+            {
+                id: 8,
+                before: "",
+                options: ["Despite", "Although"],
+                after: " feeling tired, Amir finished his homework.",
+                correct: "Despite",
+                explanation: "'Despite' is followed by an -ing verb phrase ('feeling tired'). 'Although' requires a subject and finite verb."
+            },
+            {
+                id: 9,
+                before: "Many teenagers enjoy team sports. ",
+                options: ["For example", "In other words"],
+                after: ", basketball and volleyball are popular.",
+                correct: "For example",
+                explanation: "'For example' introduces specific examples (basketball and volleyball) of team sports."
+            },
+            {
+                id: 10,
+                before: "The school library is a quiet place to study. ",
+                options: ["Moreover", "Because"],
+                after: ", it has computers students can use.",
+                correct: "Moreover",
+                explanation: "'Moreover' adds a second positive point about the library."
+            },
+            {
+                id: 11,
+                before: "We can reduce waste by reusing containers; ",
+                options: ["that is", "however"],
+                after: ", we can use them more than once.",
+                correct: "that is",
+                explanation: "'that is' (reformulation) explains the exact meaning of 'reusing containers' in simpler terms."
+            },
+            {
+                id: 12,
+                before: "The museum was closed ",
+                options: ["due to", "because"],
+                after: " it was a public holiday.",
+                correct: "because",
+                explanation: "'because' is followed by a full clause ('it was a public holiday'). 'Due to' would require a noun phrase (e.g., 'due to a public holiday')."
+            }
+        ];
+
+        const task2Data = [
+            {
+                id: 1,
+                prompt: "The school introduced a lunchtime sports club. More students became active.",
+                linker: "as a result",
+                requiredWords: ["as a result"],
+                coreKeywords: ["school", "club", "students", "active"],
+                model: "The school introduced a lunchtime sports club. As a result, more students became active. (OR: The school introduced a lunchtime sports club; as a result, more students became active.)",
+                tip: "Use a comma right after 'As a result,' when starting the second clause/sentence."
+            },
+            {
+                id: 2,
+                prompt: "I enjoy studying with friends. I sometimes need to work alone.",
+                linker: "although",
+                requiredWords: ["although"],
+                coreKeywords: ["enjoy", "friends", "alone"],
+                model: "Although I enjoy studying with friends, I sometimes need to work alone. (OR: I enjoy studying with friends, although I sometimes need to work alone.)",
+                tip: "If 'Although' starts the sentence, place a comma between the two clauses."
+            },
+            {
+                id: 3,
+                prompt: "We stayed indoors. It was raining heavily.",
+                linker: "because",
+                requiredWords: ["because"],
+                coreKeywords: ["stayed", "indoors", "raining"],
+                model: "We stayed indoors because it was raining heavily. (OR: Because it was raining heavily, we stayed indoors.)",
+                tip: "Connect the result ('We stayed indoors') directly to the reason clause ('because it was raining heavily')."
+            },
+            {
+                id: 4,
+                prompt: "The project took longer than expected. The group completed it successfully.",
+                linker: "despite",
+                requiredWords: ["despite"],
+                coreKeywords: ["project", "group", "completed"],
+                model: "Despite the project taking longer than expected, the group completed it successfully. (OR: Despite the delay, the group completed the project successfully.)",
+                tip: "Remember: 'despite' must be followed by a noun phrase or -ing form (e.g., 'despite the project taking...'), not a full clause."
+            },
+            {
+                id: 5,
+                prompt: "Take the library books to the desk. Then, show your student card.",
+                linker: "after that",
+                requiredWords: ["after that"],
+                coreKeywords: ["books", "desk", "card"],
+                model: "Take the library books to the desk. After that, show your student card. (OR: Take the library books to the desk; after that, show your student card.)",
+                tip: "Replace 'Then,' with 'After that,' to show the next step in the sequence."
+            },
+            {
+                id: 6,
+                prompt: "Our school offers creative clubs. It offers science clubs.",
+                linker: "in addition",
+                requiredWords: ["in addition"],
+                coreKeywords: ["school", "creative", "science"],
+                model: "Our school offers creative clubs. In addition, it offers science clubs. (OR: In addition to creative clubs, our school offers science clubs.)",
+                tip: "Use 'In addition,' at the start of the second sentence, or 'In addition to + noun'."
+            }
+        ];
+
+        const task3Bank = ["first", "because", "however", "for example", "as a result", "in addition", "finally"];
+
+        const task3Segments = [
+            { type: "text", content: "Our class wanted to make the school day healthier. " },
+            { type: "gap", id: 1, capitalize: true, answer: "first", explanation: "(1) 'First' introduces the very first step taken by the class." },
+            { type: "text", content: ", we asked students what activities they enjoy. We chose short activity breaks " },
+            { type: "gap", id: 2, capitalize: false, answer: "because", explanation: "(2) 'because' introduces the reason (students spend a long time sitting)." },
+            { type: "text", content: " many students spend a long time sitting in lessons. " },
+            { type: "gap", id: 3, capitalize: true, answer: "however", explanation: "(3) 'However' introduces a contrasting preference among some students." },
+            { type: "text", content: ", some students preferred quiet activities. We included options such as stretching and a short walk; " },
+            { type: "gap", id: 4, capitalize: false, answer: "for example", altAnswer: "in addition", explanation: "(4) 'for example' (or 'in addition' depending on emphasis—here 'for example' illustrates the choice options)." },
+            { type: "text", content: ", students could choose what suited them. " },
+            { type: "gap", id: 5, capitalize: true, answer: "in addition", altAnswer: "for example", explanation: "(5) 'In addition' adds the next action (making a weekly plan)." },
+            { type: "text", content: ", we made a simple weekly plan. " },
+            { type: "gap", id: 6, capitalize: true, answer: "as a result", explanation: "(6) 'As a result' shows the positive outcome (more students took part)." },
+            { type: "text", content: ", more students took part in movement breaks. " },
+            { type: "gap", id: 7, capitalize: true, answer: "finally", explanation: "(7) 'Finally' marks the concluding step (asking for feedback)." },
+            { type: "text", content: ", we asked the class for feedback and decided what to improve." }
+        ];
+
+        const task4Data = [
+            {
+                id: 1,
+                original: "The match was cancelled because it was snowing.",
+                linker: "due to",
+                requiredWords: ["due to"],
+                forbiddenWords: ["because"],
+                model: "The match was cancelled due to the snow. (OR: Due to snow / snowing, the match was cancelled.)",
+                tip: "'due to' must be followed by a noun ('the snow') or -ing form ('snowing'), not 'it was snowing'."
+            },
+            {
+                id: 2,
+                original: "Although the task was difficult, we completed it on time.",
+                linker: "despite",
+                requiredWords: ["despite"],
+                forbiddenWords: ["although"],
+                model: "Despite the difficulty of the task, we completed it on time. (OR: Despite the task being difficult, we completed it on time.)",
+                tip: "Change the clause 'the task was difficult' into a noun phrase ('the difficult task' / 'the difficulty') or -ing phrase after 'despite'."
+            },
+            {
+                id: 3,
+                original: "The school added new computers. It also extended the library opening hours.",
+                linker: "furthermore",
+                requiredWords: ["furthermore"],
+                forbiddenWords: [],
+                model: "The school added new computers. Furthermore, it extended the library opening hours.",
+                tip: "Replace 'also' with 'Furthermore,' at the beginning of the second sentence."
+            },
+            {
+                id: 4,
+                original: "The canteen introduced more vegetarian meals, so more students had a choice.",
+                linker: "consequently",
+                requiredWords: ["consequently"],
+                forbiddenWords: [],
+                model: "The canteen introduced more vegetarian meals. Consequently, more students had a choice. (OR: ...meals; consequently, more students had a choice.)",
+                tip: "Replace ', so' with a period or semicolon followed by 'Consequently,'."
+            },
+            {
+                id: 5,
+                original: "Students can travel to school by bus, bike or on foot.",
+                linker: "for example",
+                requiredWords: ["for example"],
+                forbiddenWords: [],
+                model: "Students can travel to school in several ways; for example, by bus, bike, train, or on foot.",
+                tip: "Introduce the list with 'for example,' and add one more transport option (e.g., car, train, scooter, metro)."
+            },
+            {
+                id: 6,
+                original: "First, choose a topic. Then, find two reliable sources.",
+                linker: "after that",
+                requiredWords: ["after that"],
+                forbiddenWords: [],
+                model: "First, choose a topic. After that, find two reliable sources.",
+                tip: "Replace 'Then,' with 'After that,' to connect the two steps."
+            }
+        ];
+
+        const task5Data = [
+            {
+                id: 1,
+                starter: "I would like to learn another language because …",
+                placeholder: "give a clear reason (subject + verb)...",
+                sample: "I would like to learn another language because it allows me to communicate with people from different cultures and travel more easily."
+            },
+            {
+                id: 2,
+                starter: "Although social media can be useful, …",
+                placeholder: "introduce a contrasting point...",
+                sample: "Although social media can be useful, spending too much time online can distract students from their studies."
+            },
+            {
+                id: 3,
+                starter: "Our school could become more environmentally friendly. For example, …",
+                placeholder: "give a specific example...",
+                sample: "Our school could become more environmentally friendly. For example, we could place recycling bins in every classroom and reduce paper printing."
+            },
+            {
+                id: 4,
+                starter: "First, students should … . After that, …",
+                placeholder: "write two logical steps in sequence...",
+                sample: "First, students should outline their main arguments. After that, they should write a clear first draft."
+            },
+            {
+                id: 5,
+                starter: "Many young people enjoy volunteering. In addition, …",
+                placeholder: "add another related benefit or idea...",
+                sample: "Many young people enjoy volunteering. In addition, it helps them develop teamwork and leadership skills."
+            },
+            {
+                id: 6,
+                starter: "It is important to get enough sleep; as a result, …",
+                placeholder: "describe the positive result...",
+                sample: "It is important to get enough sleep; as a result, students can concentrate better and feel more energetic during lessons."
+            }
+        ];
+
+        const topicsList = [
+            "A healthy school day",
+            "Phones at school",
+            "Protecting the environment",
+            "Learning a new skill",
+            "Planning a class event"
+        ];
+
+        const linkerCategoriesDetector = [
+            {
+                key: "addition",
+                label: "Addition",
+                patterns: ["and", "as well as", "also", "besides", "furthermore", "in addition", "moreover", "similarly"]
+            },
+            {
+                key: "sequence",
+                label: "Sequence",
+                patterns: ["first", "next", "after that", "then", "firstly", "secondly", "finally"]
+            },
+            {
+                key: "cause",
+                label: "Cause or Result",
+                patterns: ["because of", "because", "so", "therefore", "consequently", "as a result", "due to", "owing to"]
+            },
+            {
+                key: "contrast",
+                label: "Contrast",
+                patterns: ["but", "although", "though", "however", "in contrast", "nevertheless", "on the other hand", "despite", "in spite of"]
+            },
+            {
+                key: "example",
+                label: "Example or Reformulation",
+                patterns: ["for example", "that is to say", "in other words", "that is", "i.e."]
+            }
+        ];
+
+        const selfCheckItems = [
+            "I used different types of linkers.",
+            "I used because with a clause and because of / due to with a noun or -ing form.",
+            "I used although with a clause and despite / in spite of with a noun or -ing form.",
+            "I checked commas after sentence-opening linkers.",
+            "My ideas are connected logically."
+        ];
+
+        // =========================================================================
+        // STATE MANAGEMENT
+        // =========================================================================
+        const state = {
+            task1Answers: {}, // id -> chosen string
+            task2Checked: {}, // id -> boolean (true if valid)
+            selectedBankWord: null,
+            task3Answers: {}, // gapId -> word (lowercase)
+            task3Checked: false,
+            task4Checked: {}, // id -> boolean
+            selectedTopic: topicsList[0],
+            selfChecks: {}
+        };
+
+        // =========================================================================
+        // SCORE & PROGRESS UPDATER
+        // =========================================================================
+        function updateGlobalProgress() {
+            const t1Score = Object.entries(state.task1Answers).filter(([id, ans]) => {
+                const item = task1Data.find(d => d.id === Number(id));
+                return item && item.correct === ans;
+            }).length;
+
+            const t2Score = Object.values(state.task2Checked).filter(Boolean).length;
+
+            let t3Score = 0;
+            if (state.task3Checked) {
+                task3Segments.filter(s => s.type === "gap").forEach(gap => {
+                    const userVal = state.task3Answers[gap.id];
+                    if (userVal && (userVal === gap.answer || userVal === gap.altAnswer)) {
+                        t3Score++;
+                    }
+                });
+            }
+
+            const t4Score = Object.values(state.task4Checked).filter(Boolean).length;
+
+            const total = t1Score + t2Score + t3Score + t4Score;
+            const max = 12 + 6 + 7 + 6; // 31 points
+
+            document.getElementById("total-score").textContent = total;
+            document.getElementById("total-max").textContent = max;
+            const pct = Math.round((total / max) * 100);
+            document.getElementById("progress-bar").style.width = `${pct}%`;
+
+            document.getElementById("task1-score-badge").textContent = `${t1Score} / 12 Correct`;
+            document.getElementById("task2-score-badge").textContent = `${t2Score} / 6 Checked`;
+            document.getElementById("task3-score-badge").textContent = `${t3Score} / 7 Correct`;
+            document.getElementById("task4-score-badge").textContent = `${t4Score} / 6 Checked`;
+        }
+
+        // =========================================================================
+        // QUICK REFERENCE INTERACTIVITY
+        // =========================================================================
+        document.getElementById("toggle-ref-btn").addEventListener("click", () => {
+            const panel = document.getElementById("quick-ref-panel");
+            const txt = document.getElementById("toggle-ref-text");
+            const isHidden = panel.classList.contains("hidden");
+            if (isHidden) {
+                panel.classList.remove("hidden");
+                txt.textContent = "Hide Quick Reference";
+            } else {
+                panel.classList.add("hidden");
+                txt.textContent = "Show Quick Reference";
+            }
+        });
+
+        document.querySelectorAll(".ref-tab").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".ref-tab").forEach(b => {
+                    b.classList.remove("bg-indigo-600", "text-white");
+                    b.classList.add("bg-slate-100", "text-slate-600");
+                });
+                btn.classList.remove("bg-slate-100", "text-slate-600");
+                btn.classList.add("bg-indigo-600", "text-white");
+
+                const cat = btn.dataset.cat;
+                document.querySelectorAll(".ref-card").forEach(card => {
+                    if (cat === "all" || card.dataset.category === cat) {
+                        card.classList.remove("hidden");
+                    } else {
+                        card.classList.add("hidden");
+                    }
+                });
+            });
+        });
+
+        // =========================================================================
+        // TASK 1 RENDER & LOGIC
+        // =========================================================================
+        function renderTask1() {
+            const container = document.getElementById("task1-container");
+            container.innerHTML = "";
+
+            task1Data.forEach(item => {
+                const chosen = state.task1Answers[item.id];
+                const isAnswered = Boolean(chosen);
+                const isCorrect = chosen === item.correct;
+
+                const row = document.createElement("div");
+                row.className = `p-3.5 sm:p-4 rounded-xl border transition ${
+                    !isAnswered
+                        ? "bg-slate-50/70 border-slate-200/80"
+                        : isCorrect
+                        ? "bg-emerald-50/60 border-emerald-200"
+                        : "bg-rose-50/60 border-rose-200"
+                }`;
+
+                const buttonsHtml = item.options.map(opt => {
+                    let btnClass = "bg-white border-slate-300 text-slate-800 hover:border-indigo-400 hover:bg-indigo-50";
+                    if (chosen === opt) {
+                        btnClass = isCorrect
+                            ? "bg-emerald-600 border-emerald-600 text-white shadow-sm"
+                            : "bg-rose-600 border-rose-600 text-white shadow-sm";
+                    } else if (isAnswered && opt === item.correct) {
+                        btnClass = "bg-emerald-100 border-emerald-400 text-emerald-900 font-semibold";
+                    }
+                    return `<button type="button" onclick="selectTask1Option(${item.id}, '${opt.replace(/'/g, "\\'")}')" class="inline-flex items-center px-3 py-1 mx-1 my-0.5 rounded-full border text-sm font-semibold transition cursor-pointer ${btnClass}">${opt}</button>`;
+                }).join("");
+
+                row.innerHTML = `
+                    <div class="flex items-start gap-3">
+                        <span class="w-6 h-6 rounded-full bg-white border border-slate-200 text-slate-600 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">${item.id}</span>
+                        <div class="flex-1 space-y-2">
+                            <div class="text-sm sm:text-base text-slate-800 leading-relaxed">
+                                ${item.before}<span class="inline-flex flex-wrap items-center align-baseline bg-slate-200/60 px-1.5 py-0.5 rounded-full mx-0.5">${buttonsHtml}</span>${item.after}
+                            </div>
+                            ${isAnswered ? `
+                                <div class="text-xs flex items-start gap-1.5 ${isCorrect ? "text-emerald-800" : "text-rose-800"}">
+                                    <span class="font-bold shrink-0">${isCorrect ? "✓ Correct:" : "✕ Try again:"}</span>
+                                    <span>${item.explanation}</span>
+                                </div>
+                            ` : ""}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function selectTask1Option(id, option) {
+            state.task1Answers[id] = option;
+            renderTask1();
+            updateGlobalProgress();
+        }
+
+        function resetTask1() {
+            state.task1Answers = {};
+            renderTask1();
+            updateGlobalProgress();
+        }
+
+        // =========================================================================
+        // TASK 2 RENDER & LOGIC
+        // =========================================================================
+        function renderTask2() {
+            const container = document.getElementById("task2-container");
+            container.innerHTML = "";
+
+            task2Data.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "p-4 rounded-xl bg-slate-50/70 border border-slate-200/80 space-y-3";
+                card.innerHTML = `
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div class="flex items-start gap-2.5">
+                            <span class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">${item.id}</span>
+                            <p class="text-sm sm:text-base font-medium text-slate-800">
+                                ${item.prompt}
+                                <span class="inline-block ml-1.5 px-2.5 py-0.5 rounded-full bg-indigo-600 text-white text-xs font-semibold">(${item.linker})</span>
+                            </p>
+                        </div>
+                        <button type="button" onclick="toggleModel('t2-model-${item.id}')" class="no-print self-start sm:self-center text-xs font-semibold text-indigo-600 hover:text-indigo-800 underline shrink-0">
+                            Show Model Answer
+                        </button>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <input type="text" id="t2-input-${item.id}" placeholder="Type your combined sentence here..." class="flex-1 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-sm text-slate-800 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition">
+                        <button type="button" onclick="checkSingleTask2(${item.id})" class="no-print px-4 py-2 rounded-xl bg-white border border-slate-300 hover:border-indigo-500 hover:text-indigo-600 text-xs font-bold text-slate-700 transition shrink-0">
+                            Check
+                        </button>
+                    </div>
+                    <div id="t2-fb-${item.id}" class="hidden text-xs rounded-lg p-2.5"></div>
+                    <div id="t2-model-${item.id}" class="hidden text-xs bg-indigo-50 border border-indigo-100 text-indigo-950 rounded-lg p-3 space-y-1">
+                        <div class="font-bold text-indigo-700">Model Answer:</div>
+                        <div>${item.model}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function checkSingleTask2(id) {
+            const item = task2Data.find(d => d.id === id);
+            const input = document.getElementById(`t2-input-${id}`);
+            const fb = document.getElementById(`t2-fb-${id}`);
+            const val = input.value.trim();
+
+            fb.classList.remove("hidden", "bg-emerald-50", "text-emerald-800", "border", "border-emerald-200", "bg-amber-50", "text-amber-800", "border-amber-200", "bg-rose-50", "text-rose-800", "border-rose-200");
+
+            if (!val) {
+                fb.classList.add("bg-rose-50", "text-rose-800", "border", "border-rose-200");
+                fb.textContent = "Please write a sentence before checking.";
+                state.task2Checked[id] = false;
+                updateGlobalProgress();
+                return;
+            }
+
+            const lower = val.toLowerCase();
+            const hasLinker = item.requiredWords.every(w => lower.includes(w));
+            const hasCapitalStart = /^[A-Z]/.test(val);
+            const hasEndPunct = /[.!?]$/.test(val);
+            const matchedKeywords = item.coreKeywords.filter(k => lower.includes(k)).length;
+
+            if (hasLinker && matchedKeywords >= 2 && hasCapitalStart && hasEndPunct) {
+                fb.classList.add("bg-emerald-50", "text-emerald-800", "border", "border-emerald-200");
+                fb.innerHTML = `<strong>✓ Great job!</strong> You included <em>"${item.linker}"</em>, kept the key ideas, and used proper capitalization and end punctuation. Compare with the Model Answer to double-check internal commas.`;
+                state.task2Checked[id] = true;
+            } else {
+                fb.classList.add("bg-amber-50", "text-amber-900", "border", "border-amber-200");
+                let issues = [];
+                if (!hasLinker) issues.push(`include the linker <strong>"${item.linker}"</strong>`);
+                if (matchedKeywords < 2) issues.push("include both original ideas");
+                if (!hasCapitalStart) issues.push("start with a capital letter");
+                if (!hasEndPunct) issues.push("end with a period (.)");
+                fb.innerHTML = `<strong>Almost there:</strong> Make sure you ${issues.join(", ")}. <br><span class="text-slate-600 mt-1 inline-block">Tip: ${item.tip}</span>`;
+                state.task2Checked[id] = false;
+            }
+            updateGlobalProgress();
+        }
+
+        function checkAllTask2() {
+            task2Data.forEach(item => checkSingleTask2(item.id));
+        }
+
+        // =========================================================================
+        // TASK 3 RENDER & LOGIC (WORD BANK & MINI TEXT)
+        // =========================================================================
+        function formatWordForGap(word, capitalize) {
+            if (!word) return "";
+            if (!capitalize) return word;
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        }
+
+        function renderTask3() {
+            // Render Word Bank
+            const bankEl = document.getElementById("word-bank");
+            bankEl.innerHTML = "";
+            const usedWords = Object.values(state.task3Answers);
+
+            task3Bank.forEach(word => {
+                const isUsed = usedWords.includes(word);
+                const isSelected = state.selectedBankWord === word;
+
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.textContent = word;
+                btn.disabled = isUsed;
+
+                if (isUsed) {
+                    btn.className = "px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium bg-slate-200/70 text-slate-400 line-through cursor-not-allowed";
+                } else if (isSelected) {
+                    btn.className = "px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold bg-violet-600 text-white shadow-sm ring-2 ring-violet-300 transition cursor-pointer";
+                } else {
+                    btn.className = "px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-white border border-slate-300 text-slate-700 hover:border-violet-500 hover:text-violet-700 transition cursor-pointer shadow-2xs";
+                }
+
+                btn.addEventListener("click", () => {
+                    state.selectedBankWord = (state.selectedBankWord === word) ? null : word;
+                    renderTask3();
+                });
+
+                bankEl.appendChild(btn);
+            });
+
+            // Render Paragraph with Gaps
+            const paraEl = document.getElementById("task3-paragraph");
+            paraEl.innerHTML = "";
+
+            task3Segments.forEach(seg => {
+                if (seg.type === "text") {
+                    paraEl.appendChild(document.createTextNode(seg.content));
+                } else {
+                    const filledWord = state.task3Answers[seg.id];
+                    const gapBtn = document.createElement("button");
+                    gapBtn.type = "button";
+
+                    let statusClass = "border-dashed border-violet-400 bg-white text-violet-700 hover:bg-violet-100/70";
+                    if (filledWord) {
+                        statusClass = "border-solid border-violet-600 bg-violet-600 text-white font-semibold shadow-2xs";
+                        if (state.task3Checked) {
+                            const isRight = (filledWord === seg.answer || filledWord === seg.altAnswer);
+                            statusClass = isRight
+                                ? "border-solid border-emerald-600 bg-emerald-600 text-white font-semibold"
+                                : "border-solid border-rose-600 bg-rose-600 text-white font-semibold";
+                        }
+                    } else if (state.selectedBankWord) {
+                        statusClass = "border-dashed border-violet-600 bg-violet-100 text-violet-900 ring-2 ring-violet-300 animate-pulse";
+                    }
+
+                    gapBtn.className = `inline-flex items-center justify-center min-w-[115px] px-3 py-0.5 mx-1 rounded-lg border-2 text-sm sm:text-base transition cursor-pointer align-baseline ${statusClass}`;
+                    gapBtn.textContent = filledWord ? formatWordForGap(filledWord, seg.capitalize) : `(${seg.id}) ________`;
+                    gapBtn.title = filledWord ? "Click to remove word" : "Click to insert selected word";
+
+                    gapBtn.addEventListener("click", () => {
+                        if (state.selectedBankWord) {
+                            state.task3Answers[seg.id] = state.selectedBankWord;
+                            state.selectedBankWord = null;
+                            state.task3Checked = false;
+                            document.getElementById("task3-feedback").classList.add("hidden");
+                            renderTask3();
+                            updateGlobalProgress();
+                        } else if (filledWord) {
+                            delete state.task3Answers[seg.id];
+                            state.task3Checked = false;
+                            document.getElementById("task3-feedback").classList.add("hidden");
+                            renderTask3();
+                            updateGlobalProgress();
+                        } else {
+                            // Auto-select first available word in bank as helper if user clicks empty gap first
+                            const firstAvail = task3Bank.find(w => !Object.values(state.task3Answers).includes(w));
+                            if (firstAvail) {
+                                state.task3Answers[seg.id] = firstAvail;
+                                state.task3Checked = false;
+                                renderTask3();
+                                updateGlobalProgress();
+                            }
+                        }
+                    });
+
+                    paraEl.appendChild(gapBtn);
+                }
+            });
+        }
+
+        function checkTask3() {
+            state.task3Checked = true;
+            renderTask3();
+            updateGlobalProgress();
+
+            const fbBox = document.getElementById("task3-feedback");
+            fbBox.classList.remove("hidden");
+            fbBox.innerHTML = `<div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Answer Explanations</div>`;
+
+            task3Segments.filter(s => s.type === "gap").forEach(gap => {
+                const userVal = state.task3Answers[gap.id];
+                const isRight = userVal && (userVal === gap.answer || userVal === gap.altAnswer);
+                const itemDiv = document.createElement("div");
+                itemDiv.className = `text-xs p-2.5 rounded-lg border ${isRight ? "bg-emerald-50 border-emerald-200 text-emerald-900" : "bg-rose-50 border-rose-200 text-rose-900"}`;
+                itemDiv.innerHTML = `<strong>${isRight ? "✓" : "✕"} Gap (${gap.id}):</strong> ${gap.explanation}`;
+                fbBox.appendChild(itemDiv);
+            });
+        }
+
+        function resetTask3() {
+            state.task3Answers = {};
+            state.selectedBankWord = null;
+            state.task3Checked = false;
+            document.getElementById("task3-feedback").classList.add("hidden");
+            renderTask3();
+            updateGlobalProgress();
+        }
+
+        // =========================================================================
+        // TASK 4 RENDER & LOGIC
+        // =========================================================================
+        function renderTask4() {
+            const container = document.getElementById("task4-container");
+            container.innerHTML = "";
+
+            task4Data.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "p-4 rounded-xl bg-slate-50/70 border border-slate-200/80 space-y-3";
+                card.innerHTML = `
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div class="flex items-start gap-2.5">
+                            <span class="w-6 h-6 rounded-full bg-violet-100 text-violet-700 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">${item.id}</span>
+                            <p class="text-sm sm:text-base font-medium text-slate-800">
+                                ${item.original}
+                                <span class="inline-block ml-1.5 px-2.5 py-0.5 rounded-full bg-violet-600 text-white text-xs font-semibold">(${item.linker})</span>
+                            </p>
+                        </div>
+                        <button type="button" onclick="toggleModel('t4-model-${item.id}')" class="no-print self-start sm:self-center text-xs font-semibold text-violet-600 hover:text-violet-800 underline shrink-0">
+                            Show Model Answer
+                        </button>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <input type="text" id="t4-input-${item.id}" placeholder="Rewrite the sentence using '${item.linker}'..." class="flex-1 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-sm text-slate-800 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition">
+                        <button type="button" onclick="checkSingleTask4(${item.id})" class="no-print px-4 py-2 rounded-xl bg-white border border-slate-300 hover:border-violet-500 hover:text-violet-600 text-xs font-bold text-slate-700 transition shrink-0">
+                            Check
+                        </button>
+                    </div>
+                    <div id="t4-fb-${item.id}" class="hidden text-xs rounded-lg p-2.5"></div>
+                    <div id="t4-model-${item.id}" class="hidden text-xs bg-violet-50 border border-violet-100 text-violet-950 rounded-lg p-3 space-y-1">
+                        <div class="font-bold text-violet-700">Model Answer:</div>
+                        <div>${item.model}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function checkSingleTask4(id) {
+            const item = task4Data.find(d => d.id === id);
+            const input = document.getElementById(`t4-input-${id}`);
+            const fb = document.getElementById(`t4-fb-${id}`);
+            const val = input.value.trim();
+
+            fb.classList.remove("hidden", "bg-emerald-50", "text-emerald-800", "border", "border-emerald-200", "bg-amber-50", "text-amber-900", "border-amber-200", "bg-rose-50", "text-rose-800", "border-rose-200");
+
+            if (!val) {
+                fb.classList.add("bg-rose-50", "text-rose-800", "border", "border-rose-200");
+                fb.textContent = "Please write your rewritten sentence first.";
+                state.task4Checked[id] = false;
+                updateGlobalProgress();
+                return;
+            }
+
+            const lower = val.toLowerCase();
+            const hasLinker = item.requiredWords.every(w => lower.includes(w));
+            const hasForbidden = item.forbiddenWords.some(w => lower.includes(w));
+            const hasCapitalStart = /^[A-Z]/.test(val);
+            const hasEndPunct = /[.!?]$/.test(val);
+
+            // Specific grammar checks for due to / despite
+            let grammarWarning = "";
+            if (id === 1 && /due to it was/i.test(val)) {
+                grammarWarning = "Remember: 'due to' cannot be followed by a clause ('it was snowing'). Use a noun ('the snow') or -ing ('snowing').";
+            }
+            if (id === 2 && /despite the task was/i.test(val)) {
+                grammarWarning = "Remember: 'despite' cannot be followed by a finite clause ('the task was difficult'). Use a noun phrase ('the difficult task') or -ing ('the task being difficult').";
+            }
+
+            if (hasLinker && !hasForbidden && !grammarWarning && hasCapitalStart && hasEndPunct && val.split(/\s+/).length >= 5) {
+                fb.classList.add("bg-emerald-50", "text-emerald-800", "border", "border-emerald-200");
+                fb.innerHTML = `<strong>✓ Well done!</strong> Your rewrite uses <em>"${item.linker}"</em> cleanly. Check the Model Answer to verify structure and punctuation.`;
+                state.task4Checked[id] = true;
+            } else {
+                fb.classList.add("bg-amber-50", "text-amber-900", "border", "border-amber-200");
+                let msg = grammarWarning ? grammarWarning : `Make sure you include <strong>"${item.linker}"</strong>, start with a capital letter, and end with a period.`;
+                if (hasForbidden) {
+                    msg = `Replace the original linker with <strong>"${item.linker}"</strong> instead of keeping it.`;
+                }
+                fb.innerHTML = `<strong>Check structure:</strong> ${msg} <br><span class="text-slate-600 mt-1 inline-block">Tip: ${item.tip}</span>`;
+                state.task4Checked[id] = false;
+            }
+            updateGlobalProgress();
+        }
+
+        function checkAllTask4() {
+            task4Data.forEach(item => checkSingleTask4(item.id));
+        }
+
+        // =========================================================================
+        // TASK 5 RENDER & LOGIC
+        // =========================================================================
+        function renderTask5() {
+            const container = document.getElementById("task5-container");
+            container.innerHTML = "";
+
+            task5Data.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "p-4 rounded-xl bg-slate-50/70 border border-slate-200/80 space-y-2.5";
+                card.innerHTML = `
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <label for="t5-input-${item.id}" class="text-sm sm:text-base font-semibold text-slate-800">
+                            <span class="text-violet-600 mr-1.5">${item.id}.</span>${item.starter}
+                        </label>
+                        <button type="button" onclick="toggleModel('t5-sample-${item.id}')" class="no-print self-start sm:self-center text-xs font-semibold text-violet-600 hover:text-violet-800 underline shrink-0">
+                            Sample Idea
+                        </button>
+                    </div>
+                    <input type="text" id="t5-input-${item.id}" placeholder="${item.placeholder}" class="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-sm text-slate-800 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 outline-none transition">
+                    <div id="t5-sample-${item.id}" class="t5-sample hidden text-xs bg-violet-50 border border-violet-100 text-violet-950 rounded-lg p-3">
+                        <span class="font-bold text-violet-700">Sample Completion:</span> ${item.sample}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        let allT5SamplesVisible = false;
+        function toggleAllTask5Samples() {
+            allT5SamplesVisible = !allT5SamplesVisible;
+            document.querySelectorAll(".t5-sample").forEach(el => {
+                if (allT5SamplesVisible) el.classList.remove("hidden");
+                else el.classList.add("hidden");
+            });
+        }
+
+        function toggleModel(elId) {
+            const el = document.getElementById(elId);
+            if (el) el.classList.toggle("hidden");
+        }
+
+        // =========================================================================
+        // TASK 6 RENDER & LIVE PARAGRAPH ANALYZER
+        // =========================================================================
+        function renderTopicSelector() {
+            const container = document.getElementById("topic-selector");
+            container.innerHTML = "";
+            topicsList.forEach(topic => {
+                const isSelected = state.selectedTopic === topic;
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.textContent = topic;
+                btn.className = isSelected
+                    ? "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 text-white shadow-sm transition cursor-pointer"
+                    : "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer";
+                btn.addEventListener("click", () => {
+                    state.selectedTopic = topic;
+                    renderTopicSelector();
+                });
+                container.appendChild(btn);
+            });
+        }
+
+        function analyzeParagraph() {
+            const text = document.getElementById("paragraph-editor").value;
+            const words = text.trim() ? text.trim().split(/\s+/) : [];
+            const wordCount = words.length;
+
+            // Update Word Count Badge
+            const wcBadge = document.getElementById("word-count-badge");
+            wcBadge.textContent = `${wordCount} / 100–130 words`;
+            wcBadge.className = "px-2.5 py-1 rounded-lg text-xs font-bold transition ";
+            if (wordCount === 0) {
+                wcBadge.className += "bg-slate-100 text-slate-600";
+            } else if (wordCount >= 100 && wordCount <= 130) {
+                wcBadge.className += "bg-emerald-100 text-emerald-800 border border-emerald-300";
+            } else if (wordCount > 130) {
+                wcBadge.className += "bg-amber-100 text-amber-800 border border-amber-300";
+            } else {
+                wcBadge.className += "bg-sky-100 text-sky-800";
+            }
+
+            // Detect Linkers by Category
+            const reqList = document.getElementById("linker-requirements-list");
+            reqList.innerHTML = "";
+
+            const allMatchedTerms = [];
+
+            linkerCategoriesDetector.forEach(cat => {
+                const foundInCat = [];
+                cat.patterns.forEach(pat => {
+                    const escaped = pat.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+                    const regex = new RegExp(`\\b${escaped}\\b`, "gi");
+                    if (regex.test(text)) {
+                        foundInCat.push(pat);
+                        allMatchedTerms.push(pat);
+                    }
+                });
+
+                const met = foundInCat.length > 0;
+                const li = document.createElement("li");
+                li.className = `p-2 rounded-lg border flex items-start justify-between gap-2 transition ${
+                    met
+                        ? "bg-white border-emerald-300 text-emerald-950 shadow-2xs"
+                        : "bg-white/60 border-emerald-100 text-slate-600"
+                }`;
+                li.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
+                            met ? "bg-emerald-600 text-white" : "bg-slate-200 text-slate-500"
+                        }">${met ? "✓" : "•"}</span>
+                        <span class="font-semibold">${cat.label}</span>
+                    </div>
+                    ${met ? `<span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">${foundInCat[0]}</span>` : `<span class="text-[11px] text-slate-400">Missing</span>`}
+                `;
+                reqList.appendChild(li);
+            });
+
+            // Live Highlighted Preview (simulates "Underline each linking expression")
+            const previewBox = document.getElementById("detected-preview-box");
+            const previewText = document.getElementById("detected-preview-text");
+            if (text.trim().length > 0 && allMatchedTerms.length > 0) {
+                previewBox.classList.remove("hidden");
+                // Sort longest first so "in addition" matches before "in"
+                const uniqueSorted = [...new Set(allMatchedTerms)].sort((a, b) => b.length - a.length);
+                const safeHtml = text
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;");
+                const combinedRegex = new RegExp(`\\b(${uniqueSorted.map(p => p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})\\b`, "gi");
+                previewText.innerHTML = safeHtml.replace(
+                    combinedRegex,
+                    `<mark class="bg-emerald-200/80 text-emerald-950 font-semibold px-1 rounded underline decoration-emerald-600 decoration-2">$1</mark>`
+                );
+            } else {
+                previewBox.classList.add("hidden");
+            }
+        }
+
+        document.getElementById("paragraph-editor").addEventListener("input", analyzeParagraph);
+
+        // =========================================================================
+        // TASK 7: COPY PARTNER FEEDBACK
+        // =========================================================================
+        function copyPartnerFeedback() {
+            const f1 = document.getElementById("fb-1").value.trim() || "...";
+            const f2 = document.getElementById("fb-2").value.trim() || "...";
+            const f3 = document.getElementById("fb-3").value.trim() || "...";
+
+            const fullText = `Partner Feedback:\n• I understood your main idea because ${f1}\n• One linker you used effectively was ${f2}\n• You could make the connection clearer by using ${f3}`;
+
+            const tempArea = document.createElement("textarea");
+            tempArea.value = fullText;
+            document.body.appendChild(tempArea);
+            tempArea.select();
+            try {
+                document.execCommand("copy");
+                const toast = document.getElementById("copy-toast");
+                toast.classList.remove("hidden");
+                setTimeout(() => toast.classList.add("hidden"), 2500);
+            } catch (err) {
+                console.error("Copy failed", err);
+            }
+            document.body.removeChild(tempArea);
+        }
+
+        // =========================================================================
+        // SELF CHECK RENDER
+        // =========================================================================
+        function renderSelfCheck() {
+            const container = document.getElementById("self-check-list");
+            container.innerHTML = "";
+
+            selfCheckItems.forEach((label, idx) => {
+                const checked = Boolean(state.selfChecks[idx]);
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = `p-3.5 rounded-xl border text-left flex items-start gap-3 transition cursor-pointer ${
+                    checked
+                        ? "bg-emerald-950/60 border-emerald-500/60 text-emerald-100"
+                        : "bg-slate-800/70 border-slate-700 text-slate-300 hover:border-slate-500"
+                }`;
+                btn.innerHTML = `
+                    <span class="w-5 h-5 rounded-md border flex items-center justify-center shrink-0 mt-0.5 transition ${
+                        checked ? "bg-emerald-500 border-emerald-500 text-slate-950 font-bold" : "border-slate-500 bg-slate-900"
+                    }">${checked ? "✓" : ""}</span>
+                    <span class="text-xs sm:text-sm leading-snug">${label}</span>
+                `;
+                btn.addEventListener("click", () => {
+                    state.selfChecks[idx] = !state.selfChecks[idx];
+                    renderSelfCheck();
+                });
+                container.appendChild(btn);
+            });
+        }
+
+        // =========================================================================
+        // INITIALIZE APP
+        // =========================================================================
+        window.addEventListener("DOMContentLoaded", () => {
+            renderTask1();
+            renderTask2();
+            renderTask3();
+            renderTask4();
+            renderTask5();
+            renderTopicSelector();
+            analyzeParagraph();
+            renderSelfCheck();
+            updateGlobalProgress();
+        });
+    </script>
+</body>
+</html>
